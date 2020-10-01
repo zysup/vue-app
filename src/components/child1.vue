@@ -11,8 +11,8 @@
     <ul>
       <!-- <li v-for="item in arr1" :key="item" v-once>{{item}}</li>
       <li v-for="item in arr1" :key="item" v-pre>{{item}}</li> -->
-      <li v-for="item in arr1" :key="item">{{item}}</li>
-      <!-- <li v-for="item in arr2" :key="item">{{item}}</li> -->
+      <!-- <li v-for="item in arr1" :key="item">{{item}}</li> -->
+      <li v-for="item in arr2" :key="item">{{item}}</li>
     </ul>
     <hr />
     <child2 v-bind="$attrs" v-on="$listeners" v-on:test2="onTest2" v-if="show" :class="'child_2box'" @hook:mounted="child2_m"></child2>
@@ -25,6 +25,7 @@
 
 import child2 from "./child2.vue";
 export default {
+  name:'child1',
   props: {
     arr1: {
       type: Array,
