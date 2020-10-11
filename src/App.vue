@@ -1,6 +1,8 @@
 <template>
   <div class="boss" ref="boss_app" :key="appkey">
     <h4 class="abc">我是最外层的App (紫色边)我的key是：{{appkey | foremat_key}}key的双倍是：{{double_key}}</h4>
+    <img src="../statics/b/animal02.jpg" alt="" style="width:30px;height:30px;">
+    <img src="../statics/b/animal03.jpg" alt="" style="width:30px;height:30px;">
     <loding></loding>
     <dialog-box name_="lisi"></dialog-box>
     <button @click="appkey++">改变appkey</button>

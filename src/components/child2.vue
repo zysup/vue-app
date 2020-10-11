@@ -5,6 +5,8 @@
         <p>$attrs.string2_==>{{$attrs.string2_}}</p>
         <p>$attrs.string3==>{{$attrs.string3}}</p>
         <loding></loding>
+        <img src="../../statics/b/animal02.jpg" alt="" srcset="" style="width:30px;">
+        <img src="../../statics/b/animal03.jpg" alt="" srcset="" style="width:30px;">
         <dialog-box name_="lisi"></dialog-box>
     </div>
 </template>
