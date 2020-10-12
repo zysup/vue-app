@@ -1,8 +1,13 @@
 <template>
   <div class="boss" ref="boss_app" :key="appkey">
-    <h4 class="abc">我是最外层的App (紫色边)我的key是：{{appkey | foremat_key}}key的双倍是：{{double_key}}</h4>
-    <img src="../statics/b/animal02.jpg" alt="" style="width:30px;height:30px;">
-    <img src="../statics/b/animal03.jpg" alt="" style="width:30px;height:30px;">
+    <h4 class="abc">
+      我是最外层的App (紫色边)我的key是：{{appkey | foremat_key   }}key的双倍是：{{ double_key }}
+    </h4>
+
+    <img :src="imgurl_" style="width: 30px; height: 30px" @error="imgerror"/>
+    <img src="../statics/b/animal03.jpg" style="width: 30px; height: 30px" />
+    <img src="../statics/b/animal02.jpg" style="width: 30px; height: 30px" />
+    
     <loding></loding>
     <dialog-box name_="lisi"></dialog-box>
     <button @click="appkey++">改变appkey</button>
@@ -37,9 +42,9 @@ export default {
   },
   computed: {
     double_key() {
-      console.log('appkey的计算属性触发');
-      return this.appkey*2 
-    }
+      console.log("appkey的计算属性触发");
+      return this.appkey * 2;
+    },
   },
   created() {
     console.log("app.vue==>created");
@@ -56,6 +61,13 @@ export default {
     sessionStorage.name = "zhangsan";
   },
   methods: {
+    imgerror(){
+      console.log('img加载失败！');
+    },
+    imgurl_() {
+      // return "../statics/b/animal02.jpg?timestemp=" + Math.random();
+      return "../statics/b/animal02.jpg";
+    },
     offlineHandler() {
       navigator.vibrate(1000);
       alert("断网了");
@@ -95,7 +107,7 @@ export default {
     },
   },
   beforeDestroy() {
-    console.log("%capp.vue将要销毁",'color:red;');
+    console.log("%capp.vue将要销毁", "color:red;");
   },
 };
 </script>
