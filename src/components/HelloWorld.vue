@@ -6,17 +6,18 @@
       string3="鼠标"
       v-bind="benz_car"
       v-bind.sync="zhangsan"
+      :zhangsan="zhangsan"
       v-on:test1="onTest1"
       v-on:test2="onTest2"
       :arr1="arr1"
     ></child1>
-    <div :title="string1">string1==>{{string1}}</div>
-    <div>string2==>{{string2}}</div>
-    <div>string3==>{{string3}}</div>
-    <div>zhangsan==>{{zhangsan}}</div>
-    <div>number1==>{{number1}}</div>
-    <div>$data.string1==》{{$data.string1}}</div>
-    <div>arr1==>{{arr1}}</div>
+    <div :title="string1">string1==>{{ string1 }}</div>
+    <div>string2==>{{ string2 }}</div>
+    <div>string3==>{{ string3 }}</div>
+    <div>zhangsan==>{{ zhangsan }}</div>
+    <div>number1==>{{ number1 }}</div>
+    <div>$data.string1==》{{ $data.string1 }}</div>
+    <div>arr1==>{{ arr1 }}</div>
     <p class="child-1">
       <button @click="test('123')">测试</button>
       <button @click="change_arr">改变arr1</button>
@@ -29,22 +30,22 @@
 <script>
 /* eslint-disable */
 
-import child1 from "./child1.vue";
+import child1 from './child1.vue';
 export default {
-  name: "hello_world",
+  name: 'hello_world',
   data() {
     return {
-      string1: "电脑",
-      string2: "手机",
+      string1: '电脑',
+      string2: '手机',
       benz_car: {
-        model: "S600",
+        model: 'S600',
         price: 1000000,
-        color: "black",
+        color: 'black',
       },
       zhangsan: {
-        gender: "male",
+        gender: 'male',
         age: 18,
-        hobby: ["run", "swiming"],
+        hobby: ['run', 'swiming'],
         assets: {
           car: 2,
           house: 1,
@@ -57,14 +58,20 @@ export default {
   },
   components: { child1 },
   created() {
-    this.string3 = "显示器";
+    this.string3 = '显示器';
     // this.zhangsan.language = "english";
-    console.log('helloword.vue==>created');
+    // console.log('helloword.vue==>created');
   },
   mounted() {
     console.log('helloword.vue==>mounted');
-    // this.string3 = "显示器";  //在mounted里面定义数据会报错，但是也会生效，不会触发数据渲染
-    // this.$forceUpdate()
+ 
+
+    // this.string3 = '显示器2'; //在mounted里面定义数据会报错，但是也会生效，不会触发数据渲染
+    // if (this.string3 == '显示器2') {
+    //   console.log('改变了string3');
+    // }
+    // this.$forceUpdate();
+    // this.zhangsan.language = "english";
     // console.log(this);
     // console.log(this.$data.string1);
     // console.log(this.$el.textContent);
@@ -85,20 +92,23 @@ export default {
   },
 
   watch: {
-    zhangsan(new_, old_) {
-      // console.log(JSON.stringify(new_), JSON.stringify(old_));
-    },
+    // zhangsan(new_, old_) {
+    //   console.log(JSON.stringify(new_), JSON.stringify(old_));
+    // },
     zhangsan: {
       // 除非用 = 赋值，否则无法监听内部值的变化
-      // handler(newValue, oldValue) {
-      //   console.log(
-      //     JSON.stringify(newValue, null, 2),
-      //     JSON.stringify(oldValue, null, 2)
-      //   );
-      // },
-      // deep: true,
+      handler(newValue, oldValue) {
+        console.log(
+          JSON.stringify(newValue, null, 2),
+          JSON.stringify(oldValue, null, 2)
+        );
+      },
+      deep: true,
     },
-    "zhangsan.hobby"(new_, old_) {
+    'zhangsan.hobby'(new_, old_) {
+      console.log(JSON.stringify(new_, null, 2), JSON.stringify(old_, null, 2));
+    },
+    'zhangsan.assets'(new_, old_) {
       console.log(JSON.stringify(new_, null, 2), JSON.stringify(old_, null, 2));
     },
     arr1: {
@@ -108,21 +118,22 @@ export default {
       // },
       // deep: true,
     },
-    arr1(newValue,oldValue){   //除非用 = 赋值，否则无法监听内部值的变化
+    arr1(newValue, oldValue) {
+      //除非用 = 赋值，否则无法监听内部值的变化
       // console.log(newValue,oldValue);
     },
     // number1: "change_fn",
     number1: {
-      // handler: "change_fn",
-      // immediate: true,
+      handler: "change_fn",
+      immediate: true,
     },
   },
   methods: {
     onTest1(value) {
-      console.log("来自child1的事件==》%s", value);
+      console.log('来自child1的事件==》%s', value);
     },
     onTest2(new_, old_) {
-      console.log("来自child2的事件");
+      console.log('来自child2的事件');
     },
     change_fn(new_, old_) {
       console.log(new_, old_);
@@ -139,7 +150,7 @@ export default {
       // document.getElementById("keywords").style.height = "35px"
       this.$nextTick(function () {
         // DOM 更新了
-        document.getElementById("keywords").focus();
+        document.getElementById('keywords').focus();
       });
     },
     change_arr() {
@@ -156,7 +167,7 @@ export default {
   beforeDestroy() {
     console.log('helloword.vue==>beforeDestroy');
   },
-  destroyed () {
+  destroyed() {
     console.log('helloword.vue==>destroyed');
   },
 };

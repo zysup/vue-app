@@ -13,9 +13,9 @@
     <button @click="appkey++">改变appkey</button>
     <button @click="shake">震动</button>
     <button @click="test_event(123)">触发监听的事件</button>
-    <button @click="test_event2('abc')">触发EventBus监听的事件</button>
+    <!-- <button @click="test_event2('abc')">触发EventBus监听的事件</button> -->
     <!-- <button @click="change_color">换肤-红色</button>
-    <button @click="change_color2">换肤-正常</button>-->
+    <button @click="change_color2">换肤-正常</button> -->
     <BUTTON @click="change_style">换肤-切换</BUTTON>
     <HelloWorld msg="Welcome to Your Vue.js App" />
 
