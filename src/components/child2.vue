@@ -14,29 +14,36 @@
 /* eslint-disable */
 
 export default {
-  name: "child2",
+  name: 'child2',
   props: [],
   data() {
     return {};
   },
   // inheritAttrs: false,
   created() {
-    console.log("child2.vue=>created");
+    console.log('child2.vue=>created');
   },
   mounted() {
-    this.$emit("test2");
-    console.log("child2.vue=>mounted");
+    this.$emit('test2');
+    console.log('child2.vue=>mounted');
   },
   watch: {
-    "$attrs.name2"() {},
+    '$attrs.name2'() {},
   },
   beforeDestroy() {
     setTimeout(() => {
-      console.log("child2.vue=>beforeDestroy");
+      console.log('child2.vue=>beforeDestroy');
     }, 100);
+
+    let myevent = new CustomEvent('myevent', {
+      detail: {
+        msg: '拉拉啊，child2销毁啦！！！',
+      },
+    });
+    document.body.dispatchEvent(myevent);
   },
   destroyed() {
-    console.log("child2.vue=>destroyed");
+    console.log('child2.vue=>destroyed');
   },
 };
 </script>
