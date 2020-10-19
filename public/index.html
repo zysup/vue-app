@@ -41,6 +41,15 @@
   function myevnetHandle(evt) {
     console.log(evt.detail.msg);
   }
+  function clickEvnetHandle(evt) {
+    if (!evt.isTrusted) {
+      console.log(evt);
+    }
+  }
+  document.body.addEventListener('click', clickEvnetHandle, false)
+  function myevnetHandle(evt) {
+    console.log(evt.detail.msg);
+  }
 </script>
 
 </html>

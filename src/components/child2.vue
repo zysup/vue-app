@@ -40,7 +40,11 @@ export default {
         msg: '拉拉啊，child2销毁啦！！！',
       },
     });
+    //触发自定义事件
     document.body.dispatchEvent(myevent);
+    //模拟触发点击事件
+    const click = new Event('click');
+    document.body.dispatchEvent(click);
   },
   destroyed() {
     console.log('child2.vue=>destroyed');
