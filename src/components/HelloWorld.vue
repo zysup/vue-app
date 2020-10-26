@@ -51,9 +51,11 @@ export default {
           house: 1,
         },
       },
-      number1: 2,
+      number1: 4,
       showit: false,
       arr1: [1, 2, 3],
+      match_type: window.matchMedia('(min-width:400px)'),
+      // match_type: 999,
     };
   },
   components: { child1 },
@@ -61,10 +63,11 @@ export default {
     this.string3 = '显示器';
     // this.zhangsan.language = "english";
     // console.log('helloword.vue==>created');
+
+    this.match_type.addListener(this.mqCallback);
   },
   mounted() {
     console.log('helloword.vue==>mounted');
- 
 
     // this.string3 = '显示器2'; //在mounted里面定义数据会报错，但是也会生效，不会触发数据渲染
     // if (this.string3 == '显示器2') {
@@ -80,7 +83,7 @@ export default {
       // this.string3 = "液晶显示器";  //未定义到data上，没法更新
       // this.$forceUpdate()
       // this.zhangsan.age = 92; //可以用深度监听到对象变化，但是新旧值还是一样
-      this.zhangsan.assets.car = 1;  //可以用深度监听到对象变化，但是新旧值还是一样
+      this.zhangsan.assets.car = 1; //可以用深度监听到对象变化，但是新旧值还是一样
       // this.zhangsan.language = 'chinese';   //无法检测到对象新增的属性
       // this.$set(this.zhangsan,'language','chinese');  //可以检测到对象的新增属性，但是新旧值还是一样
       // this.$set(this.zhangsan,'age2',92);  //可以用深度监听到对象变化，但是新旧值还是一样
@@ -124,11 +127,18 @@ export default {
     },
     // number1: "change_fn",
     number1: {
-      handler: "change_fn",
+      handler: 'change_fn',
       immediate: true,
     },
   },
   methods: {
+    mqCallback() {
+      if (this.match_type.matches) {
+        console.log('视口不小于400px');
+      } else {
+        console.log('视口小于400px');
+      }
+    },
     onTest1(value) {
       console.log('来自child1的事件==》%s', value);
     },
@@ -165,6 +175,7 @@ export default {
     },
   },
   beforeDestroy() {
+    this.match_type.removeListener(this.mqCallback);
     console.log('helloword.vue==>beforeDestroy');
   },
   destroyed() {
