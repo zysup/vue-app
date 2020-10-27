@@ -97,7 +97,7 @@ export default {
       console.log(newValue, oldValue);
     },
     zhangsan(){
-      console.log('qwe');
+      console.log('qwe张三改变了');
     }
   },
   methods: {

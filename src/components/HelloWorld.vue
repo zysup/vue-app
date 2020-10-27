@@ -69,10 +69,10 @@ export default {
   mounted() {
     console.log('helloword.vue==>mounted');
 
-    // this.string3 = '显示器2'; //在mounted里面定义数据会报错，但是也会生效，不会触发数据渲染
-    // if (this.string3 == '显示器2') {
-    //   console.log('改变了string3');
-    // }
+    this.string3 = '显示器2'; //在mounted里面定义数据会报错，但是也会生效，不会触发数据渲染
+    if (this.string3 == '显示器2') {
+      console.log('改变了string3');
+    }
     // this.$forceUpdate();
     // this.zhangsan.language = "english";
     // console.log(this);
@@ -80,13 +80,15 @@ export default {
     // console.log(this.$el.textContent);
     setTimeout(() => {
       // this.number1 = 3;
-      // this.string3 = "液晶显示器";  //未定义到data上，没法更新
-      // this.$forceUpdate()
+      this.string3 = "液晶显示器";  //未定义到data上，没法更新
+      this.$forceUpdate()
       // this.zhangsan.age = 92; //可以用深度监听到对象变化，但是新旧值还是一样
-      this.zhangsan.assets.car = 1; //可以用深度监听到对象变化，但是新旧值还是一样
+      // this.zhangsan.assets.car = 1; //可以用深度监听到对象变化，但是新旧值还是一样
       // this.zhangsan.language = 'chinese';   //无法检测到对象新增的属性
       // this.$set(this.zhangsan,'language','chinese');  //可以检测到对象的新增属性，但是新旧值还是一样
       // this.$set(this.zhangsan,'age2',92);  //可以用深度监听到对象变化，但是新旧值还是一样
+      // this.zhangsan.hobby.push('study') //可以监听数组的长度
+      // this.zhangsan.hobby=[] //可以监听数组的长度
       // this.zhangsan = Object.assign({}, this.zhangsan, { age: 92 });
       // this.zhangsan={...this.zhangsan,age:30}
       // this.zhangsan = { ...this.zhangsan, hobby: [] };
@@ -95,18 +97,21 @@ export default {
   },
 
   watch: {
-    // zhangsan(new_, old_) {
-    //   console.log(JSON.stringify(new_), JSON.stringify(old_));
+    zhangsan(new_, old_) {
+      console.log(JSON.stringify(new_), JSON.stringify(old_));
+    },
+    // zhangsan: {
+    //   // 除非用 = 赋值，否则无法监听内部值的变化
+    //   handler(newValue, oldValue) {
+    //     console.log(
+    //       JSON.stringify(newValue, null, 2),
+    //       JSON.stringify(oldValue, null, 2)
+    //     );
+    //   },
+    //   deep: true,
     // },
-    zhangsan: {
-      // 除非用 = 赋值，否则无法监听内部值的变化
-      handler(newValue, oldValue) {
-        console.log(
-          JSON.stringify(newValue, null, 2),
-          JSON.stringify(oldValue, null, 2)
-        );
-      },
-      deep: true,
+    'zhangsan.hobby.length'(new_, old_) {
+      console.log(JSON.stringify(new_, null, 2), JSON.stringify(old_, null, 2));
     },
     'zhangsan.hobby'(new_, old_) {
       console.log(JSON.stringify(new_, null, 2), JSON.stringify(old_, null, 2));
@@ -123,7 +128,7 @@ export default {
     },
     arr1(newValue, oldValue) {
       //除非用 = 赋值，否则无法监听内部值的变化
-      // console.log(newValue,oldValue);
+      console.log(newValue,oldValue);
     },
     // number1: "change_fn",
     number1: {
@@ -164,14 +169,14 @@ export default {
       });
     },
     change_arr() {
-      // this.arr1[2] = 4;  //错误写法,不会触发数据重新渲染
+      this.arr1[2] = 4;  //错误写法,不会触发数据重新渲染
       // this.$forceUpdate()
       // this.arr1.pop()
-      // this.$set(this.arr1, 2, 4);
+      this.$set(this.arr1, 2, 4);
       // this.arr1.splice(2,1,4)
-      this.arr1 = Object.assign([], this.arr1, [1, 2, 4]); //会触发数据重新渲染,触发监听
+      // this.arr1 = Object.assign([], this.arr1, [1, 2, 4]); //会触发数据重新渲染,触发监听
       // this.arr1 = [1,2,4]  //会触发数据重新渲染,触发监听
-      // console.log(this.arr1);
+      console.log(this.arr1);
     },
   },
   beforeDestroy() {
