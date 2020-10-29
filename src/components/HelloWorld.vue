@@ -18,6 +18,7 @@
     <div>number1==>{{ number1 }}</div>
     <div>$data.string1==》{{ $data.string1 }}</div>
     <div>arr1==>{{ arr1 }}</div>
+    <div>计算属性zhansan_age==>{{ zhansan_age }}</div>
     <p class="child-1">
       <button @click="test('123')">测试</button>
       <button @click="change_arr">改变arr1</button>
@@ -59,6 +60,18 @@ export default {
     };
   },
   components: { child1 },
+  props: ["msg"],
+  computed: {
+    zhansan_age:{
+      get(){
+        return this.zhangsan.age
+      },
+      set(value){
+        this.zhangsan.age = value
+
+      }
+    }
+  },
   created() {
     this.string3 = '显示器';
     // this.zhangsan.language = "english";
@@ -79,8 +92,9 @@ export default {
     // console.log(this.$data.string1);
     // console.log(this.$el.textContent);
     setTimeout(() => {
+      this.zhansan_age = 88
       // this.number1 = 3;
-      this.string3 = "液晶显示器";  //未定义到data上，没法更新
+      // this.string3 = "液晶显示器";  //未定义到data上，没法更新
       this.$forceUpdate()
       // this.zhangsan.age = 92; //可以用深度监听到对象变化，但是新旧值还是一样
       // this.zhangsan.assets.car = 1; //可以用深度监听到对象变化，但是新旧值还是一样
