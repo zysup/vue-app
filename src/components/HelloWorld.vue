@@ -21,7 +21,7 @@
     <div>计算属性zhansan_age==>{{ zhansan_age }}</div>
     <p class="child-1">
       <button @click="test('123')">测试</button>
-      <button @click="change_arr">改变arr1</button>
+      <button @click.native="change_arr" ref="btn">改变arr1</button>
       <input @keydown="submit($event)" id="keywords" v-if="showit" />
       <BUTTON @click="showsou">显示input</BUTTON>
     </p>
@@ -107,6 +107,7 @@ export default {
       // this.zhangsan={...this.zhangsan,age:30}
       // this.zhangsan = { ...this.zhangsan, hobby: [] };
       // this.$forceUpdate();
+      this.$refs.btn.click()
     }, 5000);
   },
 
