@@ -8,7 +8,7 @@
     <img src="../statics/b/animal03.jpg" style="width: 30px; height: 30px" />
     <img src="../statics/b/animal02.jpg" style="width: 30px; height: 30px" />
     
-    <loding></loding>
+    <loding v-if="false"></loding>
     <dialog-box name_="lisi"></dialog-box>
     <button @click="appkey++">改变appkey</button>
     <button @click="shake">震动</button>

@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>myapp</title><script>console.log(sessionStorage.name);
+      function on_unload() {
+        console.log('body的unload销毁事件触发');
+        // sessionStorage.clear()
+      } 
+      function on_load() {
+        console.log('body的load事件触发');
+      } 
+      console.log('qwe我是index.html里的打印');</script><link href=/js/chunk-2d0de5b1.5c435b00.js rel=prefetch><link href=/js/chunk-2d217c7c.9d2697ff.js rel=prefetch><link href=/css/app.6418ca65.css rel=preload as=style><link href=/js/app.1a3bd4a5.js rel=preload as=script><link href=/js/chunk-vendors.48115c35.js rel=preload as=script><link href=/css/app.6418ca65.css rel=stylesheet></head><body onunload=on_unload() onload=on_load()><noscript><strong>We're sorry but myapp doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><img src=./animal01.jpg style="width: 30px;"><div id=app></div><script src=/js/chunk-vendors.48115c35.js></script><script src=/js/app.1a3bd4a5.js></script></body></html>

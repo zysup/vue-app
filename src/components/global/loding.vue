@@ -6,7 +6,10 @@
 
 <script>
     export default {
-        name:'loding'
+        name:'loding',
+        created () {
+            console.log('全局组件loding.vue加载 ');;
+        },
         
     }
 </script>

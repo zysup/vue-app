@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d217c7c"],{c7d6:function(n,e,t){"use strict";t.r(e);var a=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v("\n    我是全局组件--你好 "+n._s(n.name_)+"\n")])},c=[],s={props:{name_:{type:String,default:"zhangsan"}}},u=s,l=t("2877"),r=Object(l["a"])(u,a,c,!1,null,null,null);e["default"]=r.exports}}]);
+//# sourceMappingURL=chunk-2d217c7c.9d2697ff.js.map
