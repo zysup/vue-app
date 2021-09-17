@@ -19,6 +19,8 @@
     <div>$data.string1==》{{ $data.string1 }}</div>
     <div>arr1==>{{ arr1 }}</div>
     <div>计算属性zhansan_age==>{{ zhansan_age }}</div>
+    <div>过滤器zhansan_age==>{{ zhansan_age | calc_name}}</div>
+    <!--<div>random==>{{ random}}</div>-->
     <p class="child-1">
       <button @click="test('123')">测试</button>
       <button @click.native="change_arr" ref="btn">改变arr1</button>
@@ -60,10 +62,17 @@ export default {
     };
   },
   components: { child1 },
-  props: ["msg"],
+  props: ["msg","random"],
+  filters: {
+    calc_name: function(value) {
+      console.log('qwe calc_name');
+      return value+123;
+    }
+  },
   computed: {
     zhansan_age:{
       get(){
+        console.log('qwe zhansan_age get');
         return this.zhangsan.age
       },
       set(value){

@@ -17,7 +17,7 @@
     <button @click="change_color">换肤-红色</button>
     <button @click="change_color2">换肤-正常</button>
     <BUTTON @click="change_style">换肤-切换</BUTTON>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HelloWorld msg="Welcome to Your Vue.js App" :random="random"/>
 
     <style-component v-if="style_normal"></style-component>
     <!-- <style-component v-show="style_normal"></style-component> -->
@@ -38,6 +38,7 @@ export default {
     return {
       style_normal: false,
       appkey: 0,
+      random:0
     };
   },
   computed: {
@@ -48,6 +49,9 @@ export default {
   },
   created() {
     console.log("app.vue==>created");
+    setInterval(() => {
+      // this.random=Math.floor(Math.random()*100)
+    }, 2000);
   },
   mounted() {
     console.log("app.vue==>mounted");
